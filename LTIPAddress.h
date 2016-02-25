@@ -80,7 +80,7 @@ typedef enum LTIPAddressPresentationOptions {
 
 
 /*
- stringValueWithOptions:
+ stringValue
  
  Returns an NSString representation of the IP address.
  
