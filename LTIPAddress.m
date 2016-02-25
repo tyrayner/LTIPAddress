@@ -178,7 +178,14 @@ bail:
 	}
 	
 	if (showMask) {
-		return [NSString stringWithFormat:@"%@/%i", addr, (int)(self.netmask)];
+		int nm = 0;
+		if (self.hasNetmask) {
+			nm = self.netmask;
+		} else {
+			if (self.family == LTIPAddressFamilyIPv4) nm = 32;
+			else if (self.family == LTIPAddressFamilyIPv6) nm = 128;
+		}
+		return [NSString stringWithFormat:@"%@/%i", addr, nm];
 	} else {
 		return addr;
 	}
